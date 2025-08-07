@@ -1,5 +1,5 @@
 plugins {
-    id 'java-library'
+    id 'java'
 }
 
 repositories {
@@ -16,6 +16,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-test {
+tasks.test {
     useJUnitPlatform()
 }
