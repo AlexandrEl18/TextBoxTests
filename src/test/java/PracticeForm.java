@@ -20,7 +20,7 @@ public class PracticeForm {
         $("[id=firstName]").setValue("Алексей");
         $("[id=lastName]").setValue("Бобров");
         $("[id=userEmail]").setValue("Bobrow@mail.ru");
-        $(byText("Male")).click();
+        $("[id=genterWrapper]").$(byText("Male")).click();
         $("[id=userNumber]").setValue("9995556677");
         // Клик по полю (открыть календарь)
         $("[id=dateOfBirthInput]").click();
@@ -31,7 +31,7 @@ public class PracticeForm {
         // Клик по дню
         $(".react-datepicker__day--010").click();
         $("[id=subjectsInput]").setValue("Math").pressEnter();
-        $(byText("Sports")).click();
+        $("[id=hobbiesWrapper]").$(byText("Sports")).click();
         //загрузка фото
         $("[id=uploadPicture]").uploadFile(new File("/Users/aleksandrael/Downloads/IMG_1366.HEIC"));
         $("[id=currentAddress]").setValue("123 Maple St, Springfield, IL 62704");
@@ -42,7 +42,7 @@ public class PracticeForm {
         $(byText("Delhi")).click();
         $("[id=submit]").click();
         //проверка совпадений в итоговой таблице
-        $(".table").shouldHave(
+        $(".table-responsive").shouldHave(
                 text("Student Name"),
                 text("Алексей Бобров"),
                 text("Student Email"),
