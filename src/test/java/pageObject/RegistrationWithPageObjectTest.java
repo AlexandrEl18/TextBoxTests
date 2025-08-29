@@ -34,7 +34,7 @@ public class RegistrationWithPageObjectTest {
                 hobbies = "Sports",
                 state = "NCR",
                 city = "Delhi";
-        File pictures = new File("/Users/aleksandrael/Downloads/IMG_1366.HEIC");
+        File picture = new File("src/test/resources/1.png");
 
         registrationPage.openPage()
                 .setFirstName(userName)
@@ -45,7 +45,7 @@ public class RegistrationWithPageObjectTest {
                 .setBirthDate(day,month,year)
                 .setSubject(subject)
                 .setHobbies(hobbies)
-                .setPicture(pictures)
+                .setPicture(picture)
                 .setAddress(address)
                 .setState(state)
                 .setCity(city)
@@ -59,7 +59,7 @@ public class RegistrationWithPageObjectTest {
                 .verifyResult("Date of Birth", "10 May,1991")
                 .verifyResult("Subjects", "Math")
                 .verifyResult("Hobbies", "Sports")
-                .verifyResult("Picture", "IMG_1366.HEIC")
+                .verifyResult("Picture", "src/test/resources/1.png")
                 .verifyResult("Address", address)
                 .verifyResult("State and City", "NCR Delhi");
 
