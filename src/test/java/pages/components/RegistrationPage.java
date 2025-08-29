@@ -1,7 +1,6 @@
-package pages;
+package pages.components;
+
 import com.codeborne.selenide.SelenideElement;
-import pages.components.CalendarComponent;
-import pages.components.RegistratioResultModal;
 import java.io.File;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -9,7 +8,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
     CalendarComponent CalendarComponent = new CalendarComponent();
-    RegistratioResultModal RegistratioResultModal = new RegistratioResultModal();
+    RegistrationResultModal RegistratioResultModal = new RegistrationResultModal();
 
     private SelenideElement firsrtNameImput = $("#firstName"),
             lastNameImput = $("#lastName"),
@@ -24,9 +23,10 @@ public class RegistrationPage {
             cityInput = $("#city"),
             submitInput = $("#submit");
 
+
     public RegistrationPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
-        return this;
+            open("https://demoqa.com/automation-practice-form");
+            return this;
     }
 
     public RegistrationPage setFirstName(String value) {
@@ -93,7 +93,8 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setSubmit() {
-       submitInput.click();
+        submitInput.click();
+
         return this;
     }
 

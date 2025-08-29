@@ -1,74 +1,49 @@
 package pageObject;
-
-import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
+import  pages.components.UserData;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
-import java.io.File;
-import static java.lang.Thread.sleep;
+import pages.components.RegistrationPage;
+import pages.components.TestBase;
+import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
 
-public class RegistrationWithPageObjectTest {
+@Tag("start")
+public class RegistrationWithPageObjectTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
-
-    @BeforeEach
-    void setUp() {
-        Configuration.browserSize = "1920x1080";
-    }
-
+    UserData user = new UserData();
     @Test
     void fillFormTest() {
-        Faker faker=new Faker();
+        step("Open form", () -> {
+            registrationPage.openPage();
+        });
+        step("Fill form", () -> {
+            registrationPage.setFirstName(user.firstName)
+                    .setLastName(user.lastName)
+                    .setLastEmail(user.email)
+                    .setGender(user.gender)
+                    .setNumber(user.number)
+                    .setBirthDate(user.day, user.month, user.year)
+                    .setSubject(user.subject)
+                    .setHobbies(user.hobbies)
+                    .setPicture(user.picture)
+                    .setAddress(user.address)
+                    .setState(user.state)
+                    .setCity(user.city)
+                    .setSubmit();
+        });
 
-        String userName = faker.name().firstName(),
-                lastName = faker.name().lastName(),
-                email = faker.internet().emailAddress(),
-                number = faker.number().digits(10),
-                address = faker.address().secondaryAddress(),
-                gender = "Male",
-                day = "10",
-                month="May",
-                year = "1991",
-                subject = "Math",
-                hobbies = "Sports",
-                state = "NCR",
-                city = "Delhi";
-        File picture = new File("src/test/resources/1.png");
-
-        registrationPage.openPage()
-                .setFirstName(userName)
-                .setLastName(lastName)
-                .setLastEmail(email)
-                .setGender(gender)
-                .setNumber(number)
-                .setBirthDate(day,month,year)
-                .setSubject(subject)
-                .setHobbies(hobbies)
-                .setPicture(picture)
-                .setAddress(address)
-                .setState(state)
-                .setCity(city)
-                .setSubmit();
-        ;
-        registrationPage.verifyResultModalAppears()
-                .verifyResult("Student Name", userName + " " + lastName)
-                .verifyResult("Student Email", email)
-                .verifyResult("Gender", "Male")
-                .verifyResult("Mobile", number)
-                .verifyResult("Date of Birth", "10 May,1991")
-                .verifyResult("Subjects", "Math")
-                .verifyResult("Hobbies", "Sports")
-                .verifyResult("Picture", "src/test/resources/1.png")
-                .verifyResult("Address", address)
-                .verifyResult("State and City", "NCR Delhi");
-
-
-        try {
-            sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        step("Verify results", () -> {
+            registrationPage.verifyResultModalAppears()
+                    .verifyResult("Student Name", user.firstName + " " + user.lastName)
+                    .verifyResult("Student Email", user.email)
+                    .verifyResult("Gender", user.gender)
+                    .verifyResult("Mobile", user.number)
+                    .verifyResult("Date of Birth", user.day + " " + user.month + "," + user.year)
+                    .verifyResult("Subjects", user.subject)
+                    .verifyResult("Hobbies", user.hobbies)
+                    .verifyResult("Picture", "1.png")
+                    .verifyResult("Address", user.address)
+                    .verifyResult("State and City", user.state + " " + user.city);
+        });
     }
 }
