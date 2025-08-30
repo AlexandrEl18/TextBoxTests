@@ -14,7 +14,7 @@ allure {
 
         frameworks {
             junit5 {
-                adapterVersion.set("2.29.1") // <--- вот тут была ошибка
+                adapterVersion.set("2.29.1")
                 enabled.set(true)
                 autoconfigureListeners.set(true)
             }
@@ -39,6 +39,7 @@ tasks.withType(JavaCompile) {
 
 tasks.test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())// а может такую строчку
 }
 
 tasks.register('registration_test', Test) {
