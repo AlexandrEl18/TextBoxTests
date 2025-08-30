@@ -39,7 +39,7 @@ tasks.withType(JavaCompile) {
 
 tasks.test {
     useJUnitPlatform()
-    systemProperties(System.getProperties())// а может такую строчку
+    systemProperties(System.getProperties())// для коректной педачи
 }
 
 tasks.register('registration_test', Test) {
