@@ -31,7 +31,6 @@ public class RegistrationWithPageObjectTest extends TestBase {
                     .setCity(user.city)
                     .setSubmit();
         });
-
         step("Verify results", () -> {
             registrationPage.verifyResultModalAppears()
                     .verifyResult("Student Name", user.firstName + " " + user.lastName)
