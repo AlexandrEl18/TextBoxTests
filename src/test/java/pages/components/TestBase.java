@@ -8,21 +8,25 @@ import org.junit.jupiter.api.BeforeEach;
 import io.qameta.allure.selenide.AllureSelenide;
 
 public class TestBase {
+
     @BeforeAll
     static void beforeAll(){
-        Configuration.baseUrl="https://demoqa.com";
-        Configuration.browser="chrome";
-        Configuration.browserVersion="128.0";
-        Configuration.browserSize="1920x1080";
-        Configuration.remote="https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.remote = System.getProperty("remoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
     }
+
     @BeforeEach
-    void adListener(){
-        SelenideLogger.addListener("allure",new AllureSelenide());
+    void addListener() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
+
     @AfterEach
-    void AddAttachments(){
-        Attach.screenshots("Last screenshots");
+    void addAttachments() {
+        Attach.screenshots("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
