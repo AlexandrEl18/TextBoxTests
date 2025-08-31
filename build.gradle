@@ -39,10 +39,11 @@ tasks.withType(JavaCompile) {
 
 tasks.test {
     useJUnitPlatform()
-    systemProperties(System.getProperties())// для коректной педачи
+
 }
 
 tasks.register('registration_test', Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform {
         includeTags("start")
     }
