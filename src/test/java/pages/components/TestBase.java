@@ -16,7 +16,7 @@ public class TestBase {
         browser = System.getProperty("browser", "chrome");
         browserVersion = System.getProperty("browserVersion", "128.0");
         browserSize = System.getProperty("browserSize", "1920x1080");
-       // Configuration.remote = System.getProperty("remoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.remote = System.getProperty("remoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
     }    //  ./gradlew clean registration_test -Dbrowser=chrome -DbrowserVersion=127.0 -DbrowserSize=320x240
 
     @BeforeEach
