@@ -14,7 +14,8 @@ import static com.codeborne.selenide.Selenide.getWebDriverLogs;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
-public class Attach {
+public class Attach
+{
 
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] screenshots(String attachName) {

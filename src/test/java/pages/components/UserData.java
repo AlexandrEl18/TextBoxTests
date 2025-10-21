@@ -1,11 +1,11 @@
 package pages.components;
 
+
 import com.github.javafaker.Faker;
 import java.io.File;
 
 public class UserData {
     Faker faker = new Faker();
-
     public final String firstName = faker.name().firstName();
     public final String lastName = faker.name().lastName();
     public final String email = faker.internet().emailAddress();
